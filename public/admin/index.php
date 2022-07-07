@@ -1,24 +1,28 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
+
+
+
+
 ?>
 
-<?php include ROOT . "/public/admin/layouts/header.php"; ?>
+<?php include admin("header.php"); ?>
 
 
 <!-- Navbar -->
-<?php include ROOT . "/public/admin/layouts/nav.php" ?>
+<?php include admin("nav.php") ?>
 <!-- /.navbar -->
 
 <!-- asoide -->
-<?php include ROOT . "/public/admin/layouts/aside.php" ?>
+<?php include admin("aside.php") ?>
 <!-- asoide -->
 
 
 <div class="content-wrapper">
 
     <div class="content-header">
-        <h1>sadsa</h1>
+
     </div>
 </div>
 
@@ -26,5 +30,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
 
 
 <!-- footer -->
-<?php include ROOT . "/public/admin/layouts/footer.php" ?>
+<?php include admin("footer.php") ?>
 <!-- footer -->
