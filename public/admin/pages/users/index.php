@@ -1,9 +1,12 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
-// echo layouts("header.php");
-// die;
+
+$users =  select($conn, "users");
+
+
 
 ?>
 
@@ -23,14 +26,96 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
 
     <div class="content-header">
 
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th> id</th>
+                                            <th>name</th>
+                                            <th>email(s)</th>
+                                            <th>password</th>
+                                            <th>image</th>
+                                            <th>is_admin</th>
+                                            <th>D&E</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php foreach ($users as $key => $user) : ?>
 
 
-    </div>
-</div>
+
+                                            <tr>
+                                                <td><?= $user['id'] ?></td>
+                                                <td><?= $user['name'] ?> </td>
+                                                <td><?= $user['email'] ?></td>
+                                                <td> <?= $user['password'] ?></td>
+                                                <td><?= $user['image'] ?></td>
+
+                                                <?php
+                                                if ($user['is_admin'] == 1) {
+                                                    echo "<td class='text-primary' > Admin </td>";
+                                                } else {
+                                                    echo "<td class='text-warning'> User </td>";
+                                                }
+                                                ?>
 
 
 
 
-<!-- footer -->
-<?php include layouts("footer.php") ?>
-<!-- footer -->
+
+                                                <td>
+
+                                                    <a class="btn btn-danger " href="/controllers/users/delete.php?id=<?= $user['id'] ?>"> Delete</a>
+
+                                                    <form action="user_edit" method="post">
+
+                                                        <input type="hidden" value="<?= $user['id'] ?>" name="id">
+
+                                                        <button type="submit" class="btn btn-info my-2">Edit</button>
+
+                                                    </form>
+
+
+
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th> id</th>
+                                            <th>name</th>
+                                            <th>email(s)</th>
+                                            <th>password</th>
+                                            <th>image</th>
+                                            <th>is_admin</th>
+                                            <th>D&E</th>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- footer -->
+        <?php include layouts("footer.php") ?>
+        <!-- footer -->

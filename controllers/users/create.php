@@ -2,5 +2,15 @@
 
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
-insertToImage($conn, 'users', $_POST, image('users'), 'image');
-header("location:/user_create");
+if (image() == false) {
+    header("location:/user");
+} else {
+
+    $x = insertToImage($conn, 'users', $_POST, image(), 'image');
+
+    if ($x == true) {
+
+        $_SESSION['su']['create'] = "enta azma";
+    }
+    header("location:/user_create");
+}
