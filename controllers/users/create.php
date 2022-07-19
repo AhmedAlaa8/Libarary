@@ -8,11 +8,8 @@ if (image() == false) {
 
     $x = insertToImage($conn, 'users', $_POST, image(), 'image');
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
     if ($x == true) {
 
         $_SESSION['su']['create'] = "enta azma";
