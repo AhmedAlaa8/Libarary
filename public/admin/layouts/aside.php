@@ -58,6 +58,30 @@
 
                     </ul>
                 </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Book
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/book" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>show</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/book_create" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
             </ul>
 

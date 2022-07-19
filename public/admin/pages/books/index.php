@@ -4,7 +4,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
 
-$users =  select($conn, "users");
+// $books =  select($conn, "books");
+
+$query = "SELECT users.name as uname , books.id ,books.name , books.user_id , books.receipt ,books.back,books.phone,books.is_exist FROM users JOIN books on users.id = books.user_id";
+
+$x = mysqli_query($conn, $query);
+
+$books = mysqli_fetch_all($x, 1);
 
 
 
@@ -42,32 +48,33 @@ $users =  select($conn, "users");
                                         <tr>
                                             <th> id</th>
                                             <th>name</th>
-                                            <th>email(s)</th>
-                                            <th>password</th>
-                                            <th>image</th>
-                                            <th>is_admin</th>
+                                            <th>receipt(s)</th>
+                                            <th>back</th>
+                                            <th>phone</th>
+                                            <th>user</th>
+                                            <th>is_exist</th>
                                             <th>D&E</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        <?php foreach ($users as $key => $user) : ?>
+                                        <?php foreach ($books as $key => $book) : ?>
 
 
 
                                             <tr>
-                                                <td><?= $user['id'] ?></td>
-                                                <td><?= $user['name'] ?> </td>
-                                                <td><?= $user['email'] ?></td>
-                                                <td> <?= $user['password'] ?></td>
-
-                                                <td><img style="width: 100px ; height:100px" src="/public/admin/pages/image/<?= $user['image'] ?>" alt=""></td>
+                                                <td><?= $book['id'] ?></td>
+                                                <td><?= $book['name'] ?> </td>
+                                                <td><?= $book['receipt'] ?></td>
+                                                <td> <?= $book['back'] ?></td>
+                                                <td><?= $book['phone'] ?></td>
+                                                <td><?= $book['uname'] ?></td>
 
                                                 <?php
-                                                if ($user['is_admin'] == 1) {
-                                                    echo "<td class='text-primary' > Admin </td>";
+                                                if ($book['is_exist'] == 1) {
+                                                    echo "<td class='text-primary' > موجود </td>";
                                                 } else {
-                                                    echo "<td class='text-warning'> User </td>";
+                                                    echo "<td class='text-warning'> غير موجود </td>";
                                                 }
                                                 ?>
 
@@ -77,11 +84,11 @@ $users =  select($conn, "users");
 
                                                 <td>
 
-                                                    <a class="btn btn-danger " href="/controllers/users/delete.php?id=<?= $user['id'] ?>"> Delete</a>
+                                                    <a class="btn btn-danger " href="/controllers/books/delete.php?id=<?= $book['id'] ?>"> Delete</a>
 
-                                                    <form action="user_edit" method="post">
+                                                    <form action="book_edit" method="post">
 
-                                                        <input type="hidden" value="<?= $user['id'] ?>" name="id">
+                                                        <input type="hidden" value="<?= $book['id'] ?>" name="id">
 
                                                         <button type="submit" class="btn btn-info my-2">Edit</button>
 
@@ -98,12 +105,12 @@ $users =  select($conn, "users");
                                         <tr>
                                             <th> id</th>
                                             <th>name</th>
-                                            <th>email(s)</th>
-                                            <th>password</th>
-                                            <th>image</th>
-                                            <th>is_admin</th>
+                                            <th>receipt(s)</th>
+                                            <th>back</th>
+                                            <th>phone</th>
+                                            <th>user</th>
+                                            <th>is_exist</th>
                                             <th>D&E</th>
-
                                         </tr>
                                     </tfoot>
                                 </table>

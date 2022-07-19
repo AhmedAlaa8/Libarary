@@ -2,17 +2,18 @@
 
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
-if (image() == false) {
-    header("location:/user");
+
+if ($_POST['user_id'] == 0) {
+    header("location:/book");
 } else {
 
-    $x = insertToImage($conn, 'users', $_POST, image(), 'image');
 
+    $x = insert($conn, 'books', $_POST);
 
 
     if ($x == true) {
 
         $_SESSION['su']['create'] = "enta azma";
     }
-    header("location:/user_create");
+    header("location:/book_create");
 }

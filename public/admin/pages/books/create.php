@@ -1,8 +1,13 @@
 <?php
 
-session_start();
+
 include $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
+
+$users = select($conn, 'users');
+
+
 
 
 ?>
@@ -44,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="/controllers/users/create.php" enctype="multipart/form-data">
+                        <form method="POST" action="/controllers/books/create.php" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">name</label>
@@ -57,40 +62,67 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
                                         </div>
 
                                     <?php endif ?>
-
-
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1">
 
-                                    <?php if (isset($_SESSION['errors']['email'])) : ?>
+                                <div class="form-group">
+                                    <label for="receipt	">receipt</label>
+                                    <input type="date" class="form-control" name="receipt">
+
+                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
 
                                         <div class="alert alert-danger" role="alert">
-                                            <?= $_SESSION['errors']['email'] ?>
+                                            <?= $_SESSION['errors']['name'] ?>
                                         </div>
 
                                     <?php endif ?>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                                    <label for="back">back</label>
+                                    <input type="date" class="form-control" name="back">
+
+                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= $_SESSION['errors']['name'] ?>
+                                        </div>
+
+                                    <?php endif ?>
                                 </div>
+
+
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    <label for="phone">phone</label>
+                                    <input type="text" class="form-control" name="phone">
+
+                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= $_SESSION['errors']['name'] ?>
                                         </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                    </div>
+
+                                    <?php endif ?>
                                 </div>
+
+                                <div class="form-group">
+                                    <select name="user_id" class="custom-select form-control-border" id="exampleSelectBorder">
+                                        <option selected value="0">اختر</option>
+
+                                        <?php foreach ($users as $key => $user) : ?>
+
+
+                                            <option value="<?= $user['id'] ?>"><?= $user['name'] ?></option>
+
+
+                                        <?php endforeach  ?>
+
+                                    </select>
+                                </div>
+
+
                                 <div class="form-check">
-                                    <input type="checkbox" value="1" name="is_admin" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">is_admin</label>
+                                    <input type="checkbox" value="1" name="is_exist" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">is_exist</label>
                                 </div>
                             </div>
                             <!-- /.card-body -->
