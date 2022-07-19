@@ -39,7 +39,10 @@ function insertToImage($conn, $tablename, array $arr, $image, $nameColameImageIn
 
         $_SESSION['errors']['name'] = "enta homar";
         header("location:/user_create");
+<<<<<<< HEAD
         exit;
+=======
+>>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
     } elseif (empty($arr['email'])) {
         $_SESSION['errors']['email'] = "email is empty";
         header("location:/user_create");
@@ -81,6 +84,7 @@ function image()
         $tmp_name = $_FILES['image']['tmp_name'];
 
         $type =  explode(".", $nameimage);
+<<<<<<< HEAD
         $x = preg_match('/^[A-Za-z0-9_-]*$/', $type[0]);
 
         if ($x == 1) {
@@ -96,6 +100,20 @@ function image()
 
                 return "user$nameimage";
             }
+=======
+
+        $type =  end($type);
+
+        if ($type == "jpg" || $type == "png" || $type == "jpeg") {
+
+            $rand = rand(100, 1000000);
+
+            $name = 'users' . $rand . "." . $type;
+
+
+            move_uploaded_file($tmp_name, "../../public/admin/pages/image/$name");
+            return $name;
+>>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
         }
     } else {
         $_SESSION['errors']['image'] = "enta homar";
@@ -111,6 +129,7 @@ function select($conn, $table_name)
     return mysqli_fetch_all($x, 1);
 }
 
+<<<<<<< HEAD
 function dd($x)
 {
 
@@ -118,6 +137,8 @@ function dd($x)
     die;
 }
 
+=======
+>>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
 function selectwhere($conn, $table_name, $id)
 {
 
@@ -126,10 +147,17 @@ function selectwhere($conn, $table_name, $id)
     return mysqli_fetch_all($x, 1);
 }
 
+<<<<<<< HEAD
 function delete($conn, $id, $table_name)
 {
 
     $query = "DELETE FROM $table_name WHERE `id` = $id";
+=======
+function delete($conn, $id)
+{
+
+    $query = "DELETE FROM users WHERE `id` = $id";
+>>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
     mysqli_query($conn, $query);
 }
 

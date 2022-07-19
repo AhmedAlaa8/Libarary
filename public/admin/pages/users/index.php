@@ -6,7 +6,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
 $users =  select($conn, "users");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> baa3e4eaefe0bc10aaba7f7ef7100e7da449c3c8
 
 
 ?>
@@ -60,8 +63,9 @@ $users =  select($conn, "users");
                                                 <td><?= $user['name'] ?> </td>
                                                 <td><?= $user['email'] ?></td>
                                                 <td> <?= $user['password'] ?></td>
-
                                                 <td><img style="width: 100px ; height:100px" src="/public/admin/pages/image/<?= $user['image'] ?>" alt=""></td>
+=======
+                                            
 
                                                 <?php
                                                 if ($user['is_admin'] == 1) {
