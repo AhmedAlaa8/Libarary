@@ -121,5 +121,5 @@ $user = selectwhere($conn, 'users', $id)[0];
 <!-- footer -->
 
 <?php
-session_destroy();
+unset($_SESSION['errors'], $_SESSION['su']);
 ?>

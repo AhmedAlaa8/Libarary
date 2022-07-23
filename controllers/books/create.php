@@ -1,10 +1,12 @@
 <?php
+session_start();
 
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/DBFunc.php";
 
 
 if ($_POST['user_id'] == 0) {
-    header("location:/book");
+    $_SESSION['errors']['name'] = "enta homar";
+    header("location:/book_create");
 } else {
 
 

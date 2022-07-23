@@ -68,7 +68,7 @@ $users = select($conn, 'users');
                                     <label for="receipt	">receipt</label>
                                     <input type="date" class="form-control" name="receipt">
 
-                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+                                    <?php if (isset($_SESSION['errors']['email'])) : ?>
 
                                         <div class="alert alert-danger" role="alert">
                                             <?= $_SESSION['errors']['name'] ?>
@@ -81,7 +81,7 @@ $users = select($conn, 'users');
                                     <label for="back">back</label>
                                     <input type="date" class="form-control" name="back">
 
-                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+                                    <?php if (isset($_SESSION['errors']['email'])) : ?>
 
                                         <div class="alert alert-danger" role="alert">
                                             <?= $_SESSION['errors']['name'] ?>
@@ -95,7 +95,7 @@ $users = select($conn, 'users');
                                     <label for="phone">phone</label>
                                     <input type="text" class="form-control" name="phone">
 
-                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+                                    <?php if (isset($_SESSION['errors']['email'])) : ?>
 
                                         <div class="alert alert-danger" role="alert">
                                             <?= $_SESSION['errors']['name'] ?>
@@ -147,5 +147,5 @@ $users = select($conn, 'users');
 <!-- footer -->
 
 <?php
-session_destroy();
+unset($_SESSION['errors'], $_SESSION['su']);
 ?>

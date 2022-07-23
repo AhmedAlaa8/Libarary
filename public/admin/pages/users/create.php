@@ -1,13 +1,17 @@
 <?php
 
-session_start();
+
+
 include $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
+
+
 
 
 ?>
 
 <?php include layouts("header.php"); ?>
+
 
 
 <!-- Navbar -->
@@ -86,7 +90,15 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
+
                                     </div>
+                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= $_SESSION['errors']['name'] ?>
+                                        </div>
+
+                                    <?php endif ?>
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" value="1" name="is_admin" class="form-check-input" id="exampleCheck1">
@@ -115,5 +127,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/functions/frontFunc.php";
 <!-- footer -->
 
 <?php
-session_destroy();
+unset($_SESSION['errors'], $_SESSION['su']);
 ?>

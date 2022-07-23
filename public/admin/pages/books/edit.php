@@ -152,5 +152,5 @@ $book = selectwhere($conn, 'books', $id)[0];
 <!-- footer -->
 
 <?php
-session_destroy();
+unset($_SESSION['errors'], $_SESSION['su']);
 ?>
