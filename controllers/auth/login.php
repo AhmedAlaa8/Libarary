@@ -14,6 +14,7 @@ if (isset($_POST['email'])) {
     $users = select($conn, 'users');
 
 
+
     foreach ($users as $key => $user) {
 
         if ($user['email'] == $email && $user['password'] == $password && $user['is_admin'] == 1) {
@@ -31,7 +32,7 @@ if (isset($_POST['email'])) {
 
 
 
-            header("location:/admin");
+            return header("location:/admin");
         } else {
 
             header("location:/public/admin/auth/login.php");
