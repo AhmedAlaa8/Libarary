@@ -15,9 +15,15 @@ if (isset($_POST['email'])) {
 
 
 
+
+
+
+
+
+
     foreach ($users as $key => $user) {
 
-        if ($user['email'] == $email && $user['password'] == $password && $user['is_admin'] == 1) {
+        if ($user['email'] == $email && password_verify($password, $user['password']) == true && $user['is_admin'] == 1) {
 
 
             $_SESSION['admin'] = [
@@ -29,8 +35,6 @@ if (isset($_POST['email'])) {
 
 
             ];
-
-
 
             return header("location:/admin");
         } else {

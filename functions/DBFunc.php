@@ -46,6 +46,16 @@ function insertToImage($conn, $tablename, array $arr, $image, $nameColameImageIn
         header("location:/user_create");
     }
 
+
+
+    $passwordHash  = password_hash($arr['password'], PASSWORD_DEFAULT);
+
+
+    $arr['password'] = $passwordHash;
+
+
+
+
     $z = "";
     $n = "";
 
@@ -133,6 +143,16 @@ function delete($conn, $id, $table_name)
 
 function update($conn, $arr, $table_name, $id, $image = null, $nameColameImageInData = null)
 {
+
+
+
+    $passwordHash  = password_hash($arr['password'], PASSWORD_DEFAULT);
+
+
+    $arr['password'] = $passwordHash;
+
+
+
 
 
     $z = "";
