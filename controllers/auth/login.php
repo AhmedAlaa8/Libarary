@@ -14,13 +14,6 @@ if (isset($_POST['email'])) {
     $users = select($conn, 'users');
 
 
-
-
-
-
-
-
-
     foreach ($users as $key => $user) {
 
         if ($user['email'] == $email && password_verify($password, $user['password']) == true && $user['is_admin'] == 1) {
